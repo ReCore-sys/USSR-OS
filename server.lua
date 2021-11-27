@@ -44,9 +44,8 @@ stringform = table.concat(parts, "-")
 stringform = stringform:gsub("-", "")
 
 if table_contains(parts, "data") then
-    data = component.data
     print("Using data card")
-    hashed = data.sha256(stringform)
+    hashed = component.data.sha256(stringform)
 
 else
     print("No data card found, falling back to Lua hashing")
