@@ -43,7 +43,12 @@ end
 stringform = table.concat(parts, "-")
 stringform = stringform:gsub("-", "")
 
-if table_contains(parts, "data") then
+function datacard()
+    return component.data
+    
+end
+
+if pcall(datacard) then
     print("Using data card")
     hashed = component.data.sha256(stringform)
 
