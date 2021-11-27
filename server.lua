@@ -1,5 +1,6 @@
-component = require("component")
+
 function getid()
+    component = require("component")
     return component.list()
 end
 
@@ -10,7 +11,7 @@ function file_exists(name)
 
 print("Initialising...")
 json = require "json"
-if file_exists(ids.json) then
+if file_exists("ids.json") then
     IDFILE = io.open("ids.json", "r")
     ids = json.decode(IDFILE:read("*all"))
     IDFILE:close()
