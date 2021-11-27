@@ -1,6 +1,5 @@
 
 component = require("component")
-data = component.data
 
 function table_contains(table, element)
     for _, value in pairs(table) do
@@ -45,6 +44,7 @@ stringform = table.concat(parts, "-")
 stringform = stringform:gsub("-", "")
 
 if table_contains(parts, "data") then
+    data = component.data
     print("Using data card")
     hashed = data.sha256(stringform)
 
