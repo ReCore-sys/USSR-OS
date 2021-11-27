@@ -6,13 +6,13 @@ end
 
 print("Initialising...")
 json = require "json"
-idfile = io.open("ids.json", "r")
-if idfile then
-    ids = json.decode(idfile:read("*all"))
-    idfile:close()
+IDFILE = io.open("ids.json", "r")
+if IDFILE then
+    ids = json.decode(IDFILE:read("*all"))
+    IDFILE:close()
 else
     ids = {}
-    idfile:close()
+    IDFILE:close()
 end
 
 print(getid())
