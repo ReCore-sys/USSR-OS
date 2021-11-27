@@ -16,7 +16,6 @@ if file_exists(ids.json) then
     IDFILE:close()
 else
     ids = {}
-    IDFILE:close()
 end
 
 print(getid())
