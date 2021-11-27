@@ -1,6 +1,17 @@
 
+component = require("component")
+data = component.data
+
+function table_contains(table, element)
+    for _, value in pairs(table) do
+      if value == element then
+        return true
+      end
+    end
+    return false
+  end
+
 function getid()
-    component = require("component")
     return component.list()
 end
 
@@ -21,7 +32,29 @@ end
 print("Initialised")
 ownid = getid()
 
+parts = {}
+partids = {}
+
 for k,v in pairs(ownid) do
     print(k,v)
-   end
+    table.insert(parts, v)
+    table.insert(partids, k)
+end
+
+stringform = table.concat(parts, "-")
+stringform = stringform:gsub("-", "")
+
+if table_contains(parts, "data") then
+    hashed = data.sha256(stringform)
+
+else
+    if not file_exists("/lib/sha2/lua") then
+        print("SHA256 not installed, installing now")
+        os.execute("wget https://raw.githubusercontent.com/Egor-Skriptunoff/pure_lua_SHA/master/sha2.lua -O /lib/sha2.lua")
+    end
+    local sha = require("sha2")
+    hashed = sha.sha256(stringform)
+end
+print("Your ID is: " .. hashed)
+
 
