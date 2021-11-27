@@ -1,4 +1,4 @@
 echo Executing instructions
-rm server.lua
+rm server.lua -v
 wget https://raw.githubusercontent.com/ReCore-sys/USSR-OS/main/server.lua -q
 lua server.lua
